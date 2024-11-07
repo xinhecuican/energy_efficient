@@ -22,12 +22,9 @@ export NEMU_HOME=/path/to/NEMU
 make checkpointi
 ```
 
-
 ## gem5
 
 all src files are located in `src/cpu/pred/ftb`, BranchPredictor.py is placed in src/cpu/pred,it contains configuration of Branch Predictor.
-
-
 
 after generate checkpoints, use
 
@@ -35,6 +32,15 @@ after generate checkpoints, use
 build/RISCV/gem5.fast --outdir=${OUTPUT_DIR}_run configs/example/fs.py --caches --l2cache --xiangshan-system --cpu-type=DerivO3CPU --mem-type=DRAMsim3 --dramsim3-ini=/home/lizilin/projects/xs_gem5/xiangshan_DDR4_8Gb_x8_2400.ini --mem-size=8GB --cacheline_size=64 --l1i_size=32kB --l1i_assoc=8 --l1d_size=32kB --l1d_assoc=8 --l2_size=1MB --l2_assoc=8 --l2-hwp-type=MultiPrefetcher --l3cache --l3_size=8MB --l3_assoc=8 --bp-type=DecoupledBPUWithFTB --cpu-clock='3.5GHz' --sys-clock='3.5GHz' --warmup-insts=20000000 --maxinsts=40000000 --generic-rv-cpt=checkpoints/${BENCH}/take_cpt/${BENCH}_${POS}_${WEIGHT}/0/_${POS}_.gz --gcpt-restorer=NEMU/resource/gcpt_restore/build/gcpt.bin
 ```
 
+to run gem5. statistics are available in stats.txt. Some relevant statistics are:
 
-
-to run gem5
+```
+system.cpu.branchPred.predTimes
+system.cpu.branchPred.condSaveTime
+system.cpu.branchPred.indirectSaveTime
+system.cpu.branchPred.noBranchStream
+system.cpu.branchPred.indirectStream
+system.cpu.branchPred.directStream
+system.cpu.branchPred.condStream
+system.cpu.branchPred.allStream
+```
