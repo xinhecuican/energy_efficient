@@ -24,7 +24,15 @@ make checkpointi
 
 ## gem5
 
-all src files are located in `src/cpu/pred/ftb`, BranchPredictor.py is placed in src/cpu/pred,it contains configuration of Branch Predictor.
+all src files are located in `src/cpu/pred/ftb`, BranchPredictor.py is placed in src/cpu/pred,it contains configuration of Branch Predictor. Most of the logic resides in ftb.cc and decoupled_bpred.cc.
+
+Some options in BranchPredictor.py can be used to control the activation of certain components：
+
+- enabletbit
+- enableNST
+- enableNBT
+
+
 
 after generate checkpoints, use
 
