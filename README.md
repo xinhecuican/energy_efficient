@@ -19,7 +19,7 @@ git submodule update --init
 
 export NEMU_HOME=/path/to/NEMU
 
-make checkpointi
+make checkpointing
 ```
 
 ## gem5
